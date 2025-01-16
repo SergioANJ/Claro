@@ -1,0 +1,93 @@
+/* Estilo general */
+body {
+    background: linear-gradient(135deg, #f8f9fa, #e9ecef); /* Degradado suave */
+    font-family: 'Arial', sans-serif;
+    font-family: 'Roboto', sans-serif;
+}
+
+.container {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}
+
+/* Estilo para el logo */
+.logo {
+    width: 100px;
+    height: auto;
+    display: block;
+    float: none;
+    margin: 0 auto;  /* Centra el logo horizontalmente */
+    transition: transform 0.3s ease;
+}
+
+.logo:hover {
+    transform: scale(1.1); /* Efecto de zoom al pasar el mouse */
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.container {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+h2 {
+    color: #FF0000;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+/* Estilo de los subtítulos */
+h5 {
+    color: #007bff;
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 10px;
+    margin-top: 30px;
+}
+
+/* Estilo de las etiquetas de los formularios */
+label {
+    font-weight: 500;
+    color: #495057;
+    margin-bottom: 5px;
+}
+
+/* Estilo de los campos de entrada */
+.form-control {
+    border: 1px solid #ced4da;
+    border-radius: 6px;
+    padding: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo de los botones */
+.btn-info, .btn-primary, .btn-success {
+    background-color: #007bff;
+    border: none;
+    border-radius: 6px;
+    padding: 10px 20px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-info:hover, .btn-primary:hover, .btn-success:hover {
+    background-color: #0056b3;
+    opacity: 0.9;
+}
+
+/* Estilo para el enlace de descarga */
+#descargar {
+    margin-top: 20px;  /* Espaciado superior de 20 píxeles */
+    text-align: center;  /* Alinear el texto al centro */
+}
+
+#agregarCampoBtn,#generarExcelBtn {
+    height: 40px;
+    width: 100%; 
+    margin: 0;
+    padding: 0;
+}

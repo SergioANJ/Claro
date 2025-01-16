@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Carga y Generación de Excel</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css"> <!-- Enlazamos el archivo CSS externo -->
+</head>
+<body>
+    <img src="logo-claro.png" alt="Logo" class="logo">
+    <div class="container mt-5">
+        <h2>Formulario de Carga de Datos y Generación de Excel</h2>
+        
+        <!-- Cargar archivo procesado desde el equipo -->
+        <div class="mt-3">
+            <h4>Cargar archivo procesado desde el equipo:</h4>
+            <input type="file" id="cargarArchivo" class="form-control">
+            <button type="button" id="cargar-archivo-btn" class="btn btn-info mt-2">Cargar archivo seleccionado</button>
+        </div>
+
+        <form id="form" class="mt-4">
+
+            <!-- Sección para el nombre del archivo -->
+            <h5>Ingrese el nombre deseado para la descarga del archivo</h5>
+            <div class="form-group">
+                <label for="nombreArchivo">Nombre del Archivo Excel:</label>
+                <input type="text" class="form-control" id="nombreArchivo" name="nombreArchivo" placeholder="Ingrese el nombre del archivo">
+            </div>
+                        
+            <!-- Sección de campos TCM -->
+            <h5>CAMPOS TCM</h5>
+            <div class="form-group">
+                <label for="campana">Campaña:</label>
+                <input type="text" class="form-control" id="campana" name="campana">
+            </div>
+            <div class="form-group">
+                <label for="tipoDestino">Tipo de Destino:</label>
+                <input type="text" class="form-control" id="tipoDestino" name="tipoDestino" value="MIN" readonly>
+            </div>
+            <div class="form-group">
+                <label for="destino">Archivo de Destino:</label>
+                <input type="file" class="form-control" id="destino" name="destino">
+            </div>
+            <div class="form-group">
+                <label for="plataforma">Plataforma:</label>
+                <input type="text" class="form-control" id="plataforma" name="plataforma" value="Whatsapp" readonly>
+            </div>
+            <div class="form-group">
+                <label for="fechaHora">Fecha y Hora de Envío:</label>
+                <input type="datetime-local" class="form-control" id="fechaHora" name="fechaHora">
+            </div>
+
+            <!-- Sección de campos adicionales -->
+            <h5>CAMPOS ADICIONALES</h5>
+            <div class="form-group">
+                <label for="min">MIN:</label>
+                <input type="text" class="form-control" id="min" name="min" readonly>
+            </div>
+            <div class="form-group">
+                <label for="urlImagen">URL Imagen:</label>
+                <input type="text" class="form-control" id="urlImagen" name="urlImagen">
+            </div>
+            <div class="form-group">
+                <label for="nombreTemplate">Nombre Template:</label>
+                <input type="text" class="form-control" id="nombreTemplate" name="nombreTemplate">
+            </div>
+            <div class="form-group">
+                <label for="urlPublica">URL Pública:</label>
+                <input type="text" class="form-control" id="urlPublica" name="urlPublica">
+            </div>
+
+            <!-- Sección de campos dinámicos -->
+            <h5>CAMPOS DINÁMICOS</h5>
+            <div class="form-group">
+                <label for="tipoCampo">Tipo de Campo:</label>
+ <select class="form-control" id="tipoCampo" onchange="toggleFields()">
+                    <option value="texto">Texto</option>
+                    <option value="archivo">Archivo</option>
+                </select>
+            </div>
+            <div class="form-group" id="campoTexto">
+                <label for="nuevoCampoNombre">Nombre de Nuevo Campo:</label>
+                <input type="text" class="form-control" id="nuevoCampoNombre">
+            </div>
+            <div class="form-group" id="valorTexto">
+                <label for="nuevoCampoValor">Valor de Nuevo Campo:</label>
+                <input type="text" class="form-control" id="nuevoCampoValor">
+            </div>
+            <div class="form-group" id="campoArchivo" style="display: none;">
+                <label for="nuevoCampoArchivo">Archivo de Nuevo Campo:</label>
+                <input type="file" class="form-control" id="nuevoCampoArchivo">
+            </div>
+            <button type="button" id="agregarCampoBtn" class="btn btn-primary">Agregar Nuevo Campo</button>
+
+            <!-- Div para mostrar los campos dinámicos agregados -->
+            <div id="camposDinamicos" class="mt-3"></div>
+        </form>
+
+        <!-- Botón para generar el archivo Excel -->
+        <button type="button" class="btn btn-success mt-3" id="generarExcelBtn">Generar Excel</button>
+
+        <!-- Enlace para descargar el archivo procesado -->
+        <a id="descargar" href="#" style="display: none;" class="btn btn-primary mt-3" download>Descargar archivo procesado</a>
+    </div>
+
+    <script>
+        function toggleFields() {
+            const tipoCampo = document.getElementById('tipoCampo').value;
+            const campoTexto = document.getElementById('campoTexto');
+            const valorTexto = document.getElementById('valorTexto');
+            const campoArchivo = document.getElementById('campoArchivo');
+
+            if (tipoCampo === 'texto') {
+                campoTexto.style.display = 'block';
+                valorTexto.style.display = 'block';
+                campoArchivo.style.display = 'none';
+            } else {
+                campoTexto.style.display = 'none';
+                valorTexto.style.display = 'none';
+                campoArchivo.style.display = 'block';
+            }
+        }
+    </script>
+
+    <script src="script.js"></script>
+</body>
+</html>
